@@ -1,0 +1,98 @@
+PRAGMA foreign_keys = ON;
+CREATE TABLE professores (
+   id_prof INTEGER PRIMARY KEY AUTOINCREMENT,
+   nome TEXT NOT NULL,
+   materia TEXT NOT NULL
+);
+CREATE TABLE turma (
+   id_turma INTEGER PRIMARY KEY AUTOINCREMENT,
+   nome_turma TEXT NOT NULL,
+   tipo TEXT CHECK(tipo IN ('Programação','Design')) NOT NULL
+);
+CREATE TABLE alunos (
+   id_aluno INTEGER PRIMARY KEY AUTOINCREMENT,
+   nome TEXT NOT NULL,
+   id_turma INTEGER,
+   FOREIGN KEY (id_turma) REFERENCES turma(id_turma)
+);
+CREATE TABLE notas (
+   id_nota INTEGER PRIMARY KEY AUTOINCREMENT,
+   id_aluno INTEGER,
+   materia TEXT NOT NULL,
+   nota REAL,
+   FOREIGN KEY (id_aluno) REFERENCES alunos(id_aluno)
+);
+-- PROFESSORES
+INSERT INTO professores (nome, materia) VALUES
+('Pablo Alves','Matemática'),
+('Manuella Siqueira','Matemática'),
+('Ana Uriarte','Português'),
+('Patricia Oliveira','Português'),
+('Mario Batista','História'),
+('Lucas Carson','História'),
+('Lucas Renato','Geografia'),
+('Fernanda Vanuty','Geografia'),
+('Marcos Thulio','Sociologia'),
+('Paula Oliveira','Sociologia'),
+('Diego Marsh','Biologia'),
+('Larissa Manuela', 'Biologia'),
+('Bruno Mars','Química'),
+('Camila Cabello','Química'),
+('Rafael Freitas','Física'),
+('Beatriz Carneiro','Física'),
+('Guilherme Gabriel','Inglês'),
+('Glauco Marques','Inglês'),
+('Eduardo Carvalho','Educação Física'),
+('Carla Magna','Educação Física'),
+('Gabriel Mendes','Programação'),
+('Cicero Dias','Programação'),
+('Felipe Lopes','Design'),
+('Samara Pessoa','Design');
+-- TURMAS
+INSERT INTO turma (nome_turma, tipo) VALUES
+('1C','Programação'),
+('1B','Design'),
+('2C','Programação'),
+('2B','Design'),
+('3C','Programação'),
+('3B','Design');
+-- ALUNOS
+INSERT INTO alunos (nome, id_turma) VALUES
+-- Turma 1
+('Aluno 1',1),('Aluno 2',1),('Aluno 3',1),('Aluno 4',1),('Aluno 5',1),
+('Aluno 6',1),('Aluno 7',1),('Aluno 8',1),('Aluno 9',1),('Aluno 10',1),
+('Aluno 11',1),('Aluno 12',1),('Aluno 13',1),('Aluno 14',1),('Aluno 15',1),
+-- Turma 2
+('Aluno 16',2),('Aluno 17',2),('Aluno 18',2),('Aluno 19',2),('Aluno 20',2),
+('Aluno 21',2),('Aluno 22',2),('Aluno 23',2),('Aluno 24',2),('Aluno 25',2),
+('Aluno 26',2),('Aluno 27',2),('Aluno 28',2),('Aluno 29',2),('Aluno 30',2),
+-- Turma 3
+('Aluno 31',3),('Aluno 32',3),('Aluno 33',3),('Aluno 34',3),('Aluno 35',3),
+('Aluno 36',3),('Aluno 37',3),('Aluno 38',3),('Aluno 39',3),('Aluno 40',3),
+('Aluno 41',3),('Aluno 42',3),('Aluno 43',3),('Aluno 44',3),('Aluno 45',3),
+-- Turma 4
+('Aluno 46',4),('Aluno 47',4),('Aluno 48',4),('Aluno 49',4),('Aluno 50',4),
+('Aluno 51',4),('Aluno 52',4),('Aluno 53',4),('Aluno 54',4),('Aluno 55',4),
+('Aluno 56',4),('Aluno 57',4),('Aluno 58',4),('Aluno 59',4),('Aluno 60',4),
+-- Turma 5
+('Aluno 61',5),('Aluno 62',5),('Aluno 63',5),('Aluno 64',5),('Aluno 65',5),
+('Aluno 66',5),('Aluno 67',5),('Aluno 68',5),('Aluno 69',5),('Aluno 70',5),
+('Aluno 71',5),('Aluno 72',5),('Aluno 73',5),('Aluno 74',5),('Aluno 75',5),
+-- Turma 6
+('Aluno 76',6),('Aluno 77',6),('Aluno 78',6),('Aluno 79',6),('Aluno 80',6),
+('Aluno 81',6),('Aluno 82',6),('Aluno 83',6),('Aluno 84',6),('Aluno 85',6),
+('Aluno 86',6),('Aluno 87',6),('Aluno 88',6),('Aluno 89',6),('Aluno 90',6);
+-- NOTAS
+INSERT INTO notas (id_aluno, materia, nota) VALUES
+(1,'Matemática',8.5),(1,'Português',7.2),(1,'História',6.8),
+(2,'Matemática',5.5),(2,'Português',6.0),(2,'História',7.5),
+(3,'Matemática',9.0),(3,'Português',8.7),(3,'História',8.0),
+(10,'Física',6.5),(10,'Química',7.0),
+(20,'Biologia',8.2),(20,'Geografia',7.9),
+(30,'Inglês',9.1),(30,'Sociologia',8.3),
+(40,'Programação',9.5),(40,'Matemática',8.8),
+(50,'Design',8.9),(50,'História',7.2),
+(60,'Educação Física',10.0),
+(70,'Química',6.7),
+(80,'Física',7.5),
+(90,'Biologia',8.4);
